@@ -18,12 +18,14 @@ Instead of looking at the direction each wheel is facing and the direction it's 
 
 Despite the above simplification, we do care what each wheel is touching, this allows us to change the friction when the car is on different surfaces. Grip of tarmac should not be the same as dirt.\
 We are also throwing out the idea of a normal force. Usually the friction two objects experience is proportional to the force pushing them together, for car wheels and the ground this would involve the car weight and downforce. In Drifto, all we care about is whether the wheel is actually on the ground or not.
-TODO: diagram showing grip multiplier
+![Wheel on tarmac, grass, and in the air](images/surface%20type%20grip.png)
 
 We're also only going to conisder lateral movement. We can get away with this as in Drifto, the player has no control over the acceleration, if they did then this would feel weird. Image having full grip when going forwards but none sideways.\
 So the friction force is applied at a right angle from the direction the car is facing, in the opposite direction of velocity... most the time.\
 When the drift angle is greater than 90° the direction is changed to be in opposition to the velocity.
-TODO: gif of changing friction direction
+
+In the gif below the real direction the car is travelling is shown in green and the friction force is shown in red.\
+![GIF showing friction direction change as drift angle changes](images/friction%20force%20direction.gif)
 
 When working out how much friction force to apply, strangely enough Drifto uses the drift angle of the entire car.\
 The friction force is calculated as a quadratic function of the drift angle.
@@ -32,7 +34,7 @@ The force calculation boils down to this
 force = constantFriction + linearFriction * driftAngle + squaredFriction * driftAngle^2
 ```
 Where constantFriction, linearFriction, and squaredFriction are set by the car itself - this is how I make different cars feel different.
-TODO: friction curve graph
+![Comparing the friction curves for different cars](images/friction%20curve%20comparison.png)
 This graph can actually be seen per car on the PC version of Drifto (https://store.steampowered.com/app/2949020/Drifto_Infinite_Touge/)
 
 # The Code
@@ -73,8 +75,6 @@ float unsignedSlipAngle = Mathf.Min(Mathf.Abs(slipAngle), Mathf.PI / 2f);
 
 The next chunk is really the core of how Drifto calculates the amount of friction to apply.\
 All we need is 3 variables that we can set for each car (that's what `_configuration` is all about) and the drift angle.
-On the PC version of Drifto there's a graph that draws this.
-TODO: add annotated graph
 ```
 float frictionForceMagnitude = (
     _configuration.ConstantFriction +
@@ -106,7 +106,6 @@ float instantFrictionAccelerationUnsigned = frictionAccelerationUnsigned * Time.
 Okok so this chunk is what calculates the direction to apply the friction force. If we were emulating more realistic tyres this section would be replaced with the opposite of the cars current velocity along the ground.\
 The gist of it is `globalFrictionDirection` equals 90 degrees from where the car is facing, in the direction opposing velocity.
 Unless the drift angle is over 90 degrees, then it's set to the opposite of the car velocity.
-TODO add GIF
 ```
 bool reverseDrift = Mathf.Abs(slipAngle) > 90 * Mathf.Deg2Rad;
 float driftDirection = slipAngle > 0 ? 1 : -1; // -1 = left, 1 = right
