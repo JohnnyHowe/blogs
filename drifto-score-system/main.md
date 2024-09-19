@@ -1,7 +1,3 @@
-Aside from the bonuse systems (air time, reverse drift etc) and some constant multipliers for balancing the score in Drifto is determined entirely by the speed and angle.
-
-
-
 # Base Score Increase
 Every frame a `baseScoreIncrease` is calculated. This takes into account the speed, angle, and surface the wheels are on.
 ```
@@ -54,6 +50,7 @@ private void UpdateMultiplier()
     if (multiplier == maxMultiplier) multiplierProgress = Mathf.Min(multiplierProgress, 1);
 }
 ```
+
 # Multiplier Progress
 This is where most of the multiplier complexity lives. As stated above, this number lives between `minProgressForMultiplierDecrease` (currently -0.25) and 1.
 
@@ -79,8 +76,9 @@ multiplierProgressChange = Mathf.Clamp(
 );
 multiplierProgress += multiplierProgressChange;
 ```
-
-
 # Bonuses
-* air time
-* reverse
+Real brief because this system needs some more work done to it and more bonuses added.
+
+The current two bonuses (air time and reverse drift) work by building up their own score and applying it once the action is completed (landing on ground or exiting reverse drift).
+
+The scores they give are not linear with time. I will explain this at a later date xo.
