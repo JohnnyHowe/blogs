@@ -16,7 +16,7 @@ private float GetBaseScoreIncreaseThisFrame()
 ```
 This value is multiplied by the multiplier seen next to the car and added to your score for the run.
 
-The `ShouldAwardScore()` function returns false is the car is on road that its already travelled before - this happens when the player goes backwards. So if this is the case, the base score increase is zero.
+The `ShouldAwardScore()` function returns false if the car is on road that its already travelled before - this happens when the player goes backwards. So if this is the case, the base score increase is zero.
 
 # Multiplier
 The `multiplier` is a number between 1 and 9 that is used to multiply the base score increase (why 9? because single digits make the UI easier).
