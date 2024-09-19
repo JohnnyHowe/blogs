@@ -82,3 +82,10 @@ Real brief because this system needs some more work done to it and more bonuses 
 The current two bonuses (air time and reverse drift) work by building up their own score and applying it once the action is completed (landing on ground or exiting reverse drift).
 
 The scores they give are not linear with time. I will explain this at a later date xo.
+# FAQ
+**It runs every frame? So the score is framerate dependent?**
+
+The short answer is no, it's not framerate dependent.\
+By using the time between frames (`Time.deltaTime`) in some important calculations, we negate the framerate dependency.
+
+The UFO Framerate test (https://www.testufo.com/) shows this but with distance instead of score. By multiplying the right value changes by the time between frames, we get the same result over time (even if one looks better).
