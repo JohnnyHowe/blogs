@@ -10,6 +10,7 @@ import re
 import string
 
 IGNORE_REGEX_PATTERNS = [".vscode", ".git", "(?i)readme.md", "(?i)index.md"]
+HYPERLINK_PREFIX = "https://github.com/JohnnyHowe/blogs/blob/main/"
 
 
 def get_markdown_file_paths(start_dir=".") -> iter:
@@ -47,7 +48,8 @@ def create_hierarchy_markdown(hierarchy, indent=0):
 def get_file_hyperlink(file_path: str) -> str:
     parts = Path(file_path).parts
     parent_folder_name = parts[-2]
-    return "[%s](%s)" % (parent_folder_name, file_path)
+    file_path_web_safe = file_path.replace("\\", "/").removeprefix(".").removeprefix("\\")
+    return "[%s](%s)" % (parent_folder_name, HYPERLINK_PREFIX + file_path_web_safe)
 
 
 def get_prefix_str(indent_level: int):

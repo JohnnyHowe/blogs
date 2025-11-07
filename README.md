@@ -1,9 +1,9 @@
 # index
   - drifto
-	  - [drifto-friction-model](.\drifto\drifto-friction-model\main.md)
-	  - [drifto-score-system](.\drifto\drifto-score-system\main.md)
+	  - [drifto-friction-model](https://github.com/JohnnyHowe/blogs/blob/main//drifto/drifto-friction-model/main.md)
+	  - [drifto-score-system](https://github.com/JohnnyHowe/blogs/blob/main//drifto/drifto-score-system/main.md)
 	  - unfinished
-		  - [drifto-handling](.\drifto\unfinished\drifto-handling\main.md)
+		  - [drifto-handling](https://github.com/JohnnyHowe/blogs/blob/main//drifto/unfinished/drifto-handling/main.md)
   - unity
 	  - unfinished
-		  - [unity-cloud-build-steam-uploads](.\unity\unfinished\unity-cloud-build-steam-uploads\main.md)
+		  - [unity-cloud-build-steam-uploads](https://github.com/JohnnyHowe/blogs/blob/main//unity/unfinished/unity-cloud-build-steam-uploads/main.md)
