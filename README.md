@@ -1,3 +1,9 @@
-I am an indie game dev and I have thoughts. This is where I put organised ones.\
-Some are project specific. Some are wisdom I believe I have and I would like to share.
-
+# index
+  - drifto
+	  - [drifto-friction-model](.\drifto\drifto-friction-model\main.md)
+	  - [drifto-score-system](.\drifto\drifto-score-system\main.md)
+	  - unfinished
+		  - [drifto-handling](.\drifto\unfinished\drifto-handling\main.md)
+  - unity
+	  - unfinished
+		  - [unity-cloud-build-steam-uploads](.\unity\unfinished\unity-cloud-build-steam-uploads\main.md)

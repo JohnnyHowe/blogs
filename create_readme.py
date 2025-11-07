@@ -3,7 +3,6 @@ Create a markdown index of all markdown files in working dir.
 
 Assumes one markdown file per directory.
 Display name is the parent directory name of file.
-
 """
 import os
 from pathlib import Path
@@ -28,7 +27,8 @@ def get_markdown_file_paths(start_dir=".") -> iter:
 
 def create_markdown(file_paths: list) -> string:
     hierarchy = sort_paths_into_hierarchy(file_paths)
-    return create_hierarchy_markdown(hierarchy)
+    header = "# index\n"
+    return header + create_hierarchy_markdown(hierarchy)
 
 
 def create_hierarchy_markdown(hierarchy, indent=0):
@@ -85,7 +85,7 @@ def write_to_file(markdown, file_path="index.md"):
 def main():
     file_paths = get_markdown_file_paths()
     markdown = create_markdown(list(file_paths))
-    write_to_file(markdown)
+    write_to_file(markdown, "README.md")
 
 
 if __name__ == "__main__":
